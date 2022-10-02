@@ -1,0 +1,24 @@
+{
+	"folders": [
+		{
+			"path": ".",
+		},
+		{
+			"path": "intemperapp/client",
+		},
+		{
+			"path": "intemperapp/server",
+		},
+	],
+	"settings": {
+		"editor.tabSize": 2,
+		"eslint.validate": [
+			"html",
+			"javascript",
+			"vue"
+		],
+		"editor.codeActionsOnSave": {
+			"source.fixAll.eslint": true
+		},
+	}
+}
