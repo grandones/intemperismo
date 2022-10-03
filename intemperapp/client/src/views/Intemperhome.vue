@@ -1,0 +1,3 @@
+<template>
+  WELCOME BIZNATCHOS
+</template>
