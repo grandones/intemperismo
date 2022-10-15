@@ -1,13 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Home from '../views/Home.vue';
 import Intemperhome from '../views/Intemperhome.vue';
 
 const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home,
-  },
+
   {
     path: '/about',
     name: 'About',
@@ -19,6 +14,7 @@ const routes = [
   {
     path: '/intemperhome',
     name: 'Intemperhome',
+    alias: ['/'],
     component: Intemperhome,
   },
 ];
