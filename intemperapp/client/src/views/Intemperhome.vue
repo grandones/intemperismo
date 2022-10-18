@@ -1,5 +1,5 @@
 <template>
-  WELCOME BIZNATCHOS
+  <h1>WELCOME BIZNATCHOS</h1>
 </template>
 
 <style scoped>

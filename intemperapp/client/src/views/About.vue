@@ -46,7 +46,6 @@
 <script>
 import { Splide, SplideSlide } from '@splidejs/vue-splide';
 import { ref, onMounted } from 'vue';
-import '@splidejs/splide/dist/css/themes/splide-default.min.css';
 
 export default {
   name: 'AboutPage',
