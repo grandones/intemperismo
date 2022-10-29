@@ -3,7 +3,7 @@
     <MainHeader />
     <main>
       <router-view v-slot="{ Component }">
-        <Transition name="fade">
+        <Transition name="slide">
           <component :is="Component" />
         </Transition>
       </router-view>
@@ -40,10 +40,10 @@ export default {
 
 body {
   background-image: url("~@/assets/intemperismo.jpg");
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
+  background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
 }
 </style>
 
@@ -64,13 +64,20 @@ main {
   top: 0;
   z-index: 1020;
 }
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s ease;
+.slide-enter-active {
+  transition: all 0.5s linear 0.4s;
 }
 
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
+.slide-leave-active {
+  transition: all 0.5s linear;
 }
+
+.slide-enter-from {
+  transform: translateX(100%);
+}
+
+.slide-leave-to {
+  transform: translateX(-100%);
+}
+
 </style>
