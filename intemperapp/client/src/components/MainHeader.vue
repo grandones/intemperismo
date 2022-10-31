@@ -43,6 +43,10 @@ header {
   transition: background-color 0.2s ease;
 }
 .change_color {
-  background-color: var(--background-black)
+  background-color: var(--background-black);
+  transition: background-color 0.6s ease;
+}
+.sticky-top {
+  transition: background-color 0.6s ease;
 }
 </style>

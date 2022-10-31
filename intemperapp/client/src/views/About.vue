@@ -31,6 +31,7 @@
       class="splide"
     >
       <SplideTrack>
+        <div class="overlay"><span>Testando</span></div>
         <SplideSlide key="CITOR">
         <img src="@/assets/crew/vitor1.jpg" alt="CITOR">
         </SplideSlide>
@@ -49,8 +50,8 @@
       </SplideTrack>
       <div class="button-wrapper">
         <button class="play-pause splide__toggle">
-          <span class="splide__toggle__play">HOUVE</span>
-          <span class="splide__toggle__pause">HOUVE</span>
+          <span @click="showPlay" class="splide__toggle__play">NÃO HOUVE</span>
+          <span @click="showPause" class="splide__toggle__pause">HOUVE</span>
         </button>
       </div>
     </Splide>
@@ -94,7 +95,9 @@ export default {
         speed: 800,
         arrows: false,
         autoplay: true,
-        interval: 4000,
+        interval: 3000,
+        rewind: true,
+        rewindSpeed: 800,
       },
       thumbsOptions: {
         type: 'slide',
@@ -110,6 +113,14 @@ export default {
         arrows: false,
       },
     };
+  },
+  methods: {
+    showPlay() {
+
+    },
+    showPause() {
+      this.mainOptions.autoplay = false;
+    },
   },
 };
 </script>
@@ -136,6 +147,22 @@ export default {
   margin-top: 5px;
 }
 .play-pause {
-
+  border: 1px solid rgb(195, 100, 27);
+  border-radius: 5px;
+  background-color: rgb(195, 100, 27);
+  color: white;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  z-index: 1000;
 }
 </style>

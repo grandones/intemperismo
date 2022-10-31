@@ -65,11 +65,11 @@ main {
   z-index: 1020;
 }
 .slide-enter-active {
-  transition: all 0.5s linear 0.4s;
+  transition: all 0.5s ease-in-out 0.4s;
 }
 
 .slide-leave-active {
-  transition: all 0.5s linear;
+  transition: all 0.5s ease-in-out;
 }
 
 .slide-enter-from {
