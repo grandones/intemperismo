@@ -53,6 +53,7 @@ main {
   background-color: var(--background-black-40);
   width: 90%;
   min-height: 90vh;
+  overflow-x: hidden;
 }
 #main-wrapper {
   display: flex;

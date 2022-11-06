@@ -31,7 +31,10 @@
       class="splide"
     >
       <SplideTrack>
-        <div class="overlay"><span>Testando</span></div>
+        <div class="overlay">
+          <i v-if="houve" class="icon bi bi-play-fill"></i>
+          <i v-else class="icon bi bi-pause-fill"></i>
+        </div>
         <SplideSlide key="CITOR">
         <img src="@/assets/crew/vitor1.jpg" alt="CITOR">
         </SplideSlide>
@@ -49,12 +52,19 @@
         </SplideSlide>
       </SplideTrack>
       <div class="button-wrapper">
-        <button class="play-pause splide__toggle">
-          <span @click="showPlay" class="splide__toggle__play">NÃO HOUVE</span>
-          <span @click="showPause" class="splide__toggle__pause">HOUVE</span>
+        <button @click="showPlayPause" class="play-pause splide__toggle">
+          <span class="splide__toggle__play">NÃO HOUVE</span>
+          <span class="splide__toggle__pause">HOUVE</span>
         </button>
       </div>
     </Splide>
+    <div v-if="!houve" class="about-biznatcho">
+      <h2>{{selectedSlide}}</h2>
+      <p>
+        Aqui fénis irão encontrar as melhores costelas chilenas e
+        as melhores cervejas artesanais do mundo.
+      </p>
+    </div>
   </div>
 </template>
 
@@ -95,9 +105,10 @@ export default {
         speed: 800,
         arrows: false,
         autoplay: true,
-        interval: 3000,
+        interval: 2500,
         rewind: true,
         rewindSpeed: 800,
+        pauseOnHover: false,
       },
       thumbsOptions: {
         type: 'slide',
@@ -112,14 +123,17 @@ export default {
         updateOnMove: true,
         arrows: false,
       },
+      houve: true,
     };
   },
   methods: {
-    showPlay() {
-
+    showPlayPause() {
+      this.houve = !this.houve;
     },
-    showPause() {
-      this.mainOptions.autoplay = false;
+  },
+  computed: {
+    selectedSlide() {
+      return Object.keys(this.main);
     },
   },
 };
@@ -144,13 +158,23 @@ export default {
   margin-bottom: 5px;
 }
 .button-wrapper {
-  margin-top: 5px;
+  margin-top: 0.4rem;
 }
 .play-pause {
   border: 1px solid rgb(195, 100, 27);
   border-radius: 5px;
-  background-color: rgb(195, 100, 27);
+  background-image: url("~@/assets/btn-bgd.png");
   color: white;
+  width: 35vh;
+}
+.play-pause:hover {
+  border: 1px solid rgba(255, 255, 255, 0);
+  background-image: url("~@/assets/intemperismo.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: initial;
+  transition: all 1.5s ease-in-out;
 }
 .overlay {
   position: absolute;
@@ -164,5 +188,25 @@ export default {
   align-items: center;
   font-size: 2rem;
   z-index: 1000;
+}
+.icon {
+  font-size: 40vh;
+}
+.overlay i {
+  opacity: 0;
+  -webkit-animation: flash 1.2s ease;
+  animation: flash 1.2s ease;
+}
+@-webkit-keyframes flash {
+ 0% { opacity: 1; }
+ 100% { opacity: 0; }
+}
+@keyframes flash {
+ 0% { opacity: 1; }
+ 100% { opacity: 0; }
+}
+.about-biznatcho {
+  margin-top: 0.4rem;
+  text-align: center;
 }
 </style>

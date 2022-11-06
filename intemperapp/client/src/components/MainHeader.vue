@@ -1,9 +1,9 @@
 <template>
   <header :class="{change_color: scrollPosition > 50}" class="sticky-top">
     <nav class="nav">
-      <router-link to="/intemperhome">Go Home, you are drunk</router-link> |
-      <router-link to="/about">About the biznatchos</router-link> |
-      <a href="https://www.chileneumaticos.cl/" target="_blank" rel="noopener noreferrer">Neumáticos</a>
+      <router-link class="me-2" to="/intemperhome">Go Home, you are drunk</router-link> |
+      <router-link class="me-2 ms-2" to="/about">About the biznatchos</router-link> |
+      <a class="ms-2" href="https://www.chileneumaticos.cl/" target="_blank" rel="noopener noreferrer">Neumáticos</a>
     </nav>
   </header>
 </template>
@@ -28,6 +28,9 @@ export default {
 </script>
 
 <style scoped>
+nav {
+  justify-content: center;
+}
 .nav a {
   font-weight: bold;
   color: #eed5b5;
