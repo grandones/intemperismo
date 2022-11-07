@@ -4,6 +4,12 @@ import Intemperhome from '../views/Intemperhome.vue';
 const routes = [
 
   {
+    path: '/intemperhome',
+    name: 'Intemperhome',
+    alias: ['/'],
+    component: Intemperhome,
+  },
+  {
     path: '/about',
     name: 'About',
     // route level code-splitting
@@ -12,10 +18,14 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
   },
   {
-    path: '/intemperhome',
-    name: 'Intemperhome',
-    alias: ['/'],
-    component: Intemperhome,
+    path: '/multimidia',
+    name: 'Multimidia',
+    component: () => import(/* webpackChunkName: "multimidia" */ '../views/Multimidia.vue'),
+  },
+  {
+    path: '/sensual',
+    name: 'Sensual',
+    component: () => import(/* webpackChunkName: "sensual" */ '../views/Sensual.vue'),
   },
 ];
 

@@ -1,9 +1,11 @@
 <template>
   <header :class="{change_color: scrollPosition > 50}" class="sticky-top">
     <nav class="nav">
-      <router-link class="me-2" to="/intemperhome">Go Home, you are drunk</router-link> |
-      <router-link class="me-2 ms-2" to="/about">About the biznatchos</router-link> |
-      <a class="ms-2" href="https://www.chileneumaticos.cl/" target="_blank" rel="noopener noreferrer">Neumáticos</a>
+      <router-link class="me-3" to="/intemperhome">Go Home, you are drunk</router-link> |
+      <router-link class="me-3 ms-3" to="/about">About the biznatchos</router-link> |
+      <router-link class="me-3 ms-3" to="/multimidia">Multimídia 145</router-link> |
+      <router-link class="me-3 ms-3" to="/sensual">Contato sensual</router-link> |
+      <a class="ms-3" href="https://www.chileneumaticos.cl/" target="_blank" rel="noopener noreferrer">Promoção de pneus</a>
     </nav>
   </header>
 </template>

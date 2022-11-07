@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div id="about">
     <h1>This is the crew of the Intempirates, YARRR</h1>
     <Splide
       aria-label="The carousel with thumbnails. Selecting a thumbnail will change the main carousel"
