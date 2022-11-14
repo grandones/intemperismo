@@ -43,7 +43,7 @@ nav {
 }
 header {
   width: 90%;
-  background-color: var(--background-black-40);
+  background-color: var(--background-black-60);
   padding: 1rem 30px 0.8rem;
   transition: background-color 0.2s ease;
 }

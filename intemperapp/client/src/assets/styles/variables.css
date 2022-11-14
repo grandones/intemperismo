@@ -1,4 +1,6 @@
 :root {
   --background-black-40: rgba(0, 0, 0, 0.400);
+  --background-black-60: rgba(0, 0, 0, 0.600);
+  --background-black-80: rgba(0, 0, 0, 0.800);
   --background-black: #000000;
 }

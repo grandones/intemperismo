@@ -6,7 +6,8 @@
     </h2>
     <h3>( ੭ ･ᴗ･ )੭ &nbsp;&nbsp;&nbsp;YARRR&nbsp;&nbsp;&nbsp; ৻(  •̀ ᗜ •́  ৻)</h3>
     <h3 class="mt-5">
-      Aqui fénis irão encontrar as melhores costelas chilenas e
+      Atenaco fénis. <br/>
+      Aqui vossas senhorias irão encontrar as melhores costelas chilenas e
       os melhores laxantes bovinos do quadrante austral de Alfa Centuri.
     </h3>
   </div>

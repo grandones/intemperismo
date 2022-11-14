@@ -46,12 +46,15 @@ body {
   background-position: center;
   overflow-y: scroll;
 }
+body.modal-open {
+    overflow: hidden;
+  }
 </style>
 
 <style scoped>
 main {
   padding: 2rem 30px 10vh;
-  background-color: var(--background-black-40);
+  background-color: var(--background-black-60);
   width: 90%;
   min-height: 90vh;
   overflow-x: hidden;

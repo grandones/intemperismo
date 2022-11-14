@@ -7,20 +7,20 @@
       ref="thumbs"
       class="thumbnail"
     >
-    <SplideSlide>
-      <img src="@/assets/crew/vitor1.jpg" alt="CITOR">
+      <SplideSlide>
+        <img src="@/assets/crew/fern/fern.jpg" alt="FERNANDELAS">
       </SplideSlide>
       <SplideSlide>
-        <img src="@/assets/crew/marco2.jpg" alt="BARCO">
+        <img src="@/assets/crew/mangusto/marcelo.jpg" alt="MÆNGÜST">
       </SplideSlide>
       <SplideSlide>
-        <img src="@/assets/crew/marcelo3.jpg" alt="MÆNGÜST">
+        <img src="@/assets/crew/vit/vitor.jpg" alt="CITOR">
       </SplideSlide>
       <SplideSlide>
-        <img src="@/assets/crew/fern4.jpg" alt="FRENIS">
+        <img src="@/assets/crew/marco/marco.jpg" alt="BARCO">
       </SplideSlide>
       <SplideSlide>
-        <img src="@/assets/crew/fafis5.jpg" alt="BATERRIST">
+        <img src="@/assets/crew/fafis/fafis.jpg" alt="BATERRIST">
       </SplideSlide>
     </Splide>
     <Splide
@@ -29,26 +29,27 @@
       ref="main"
       :has-track="false"
       class="splide"
+      @splide:active="onActive"
     >
       <SplideTrack>
         <div class="overlay">
           <i v-if="houve" class="icon bi bi-play-fill"></i>
           <i v-else class="icon bi bi-pause-fill"></i>
         </div>
-        <SplideSlide key="CITOR">
-        <img src="@/assets/crew/vitor1.jpg" alt="CITOR">
-        </SplideSlide>
-        <SplideSlide key="BARCO">
-          <img src="@/assets/crew/marco2.jpg" alt="BARCO">
+        <SplideSlide key="FERNANDELAS">
+          <img src="@/assets/crew/fern/fern.jpg" alt="FERNANDELAS">
         </SplideSlide>
         <SplideSlide key="MÆNGÜST">
-          <img src="@/assets/crew/marcelo3.jpg" alt="MÆNGÜST">
+          <img src="@/assets/crew/mangusto/marcelo.jpg" alt="MÆNGÜST">
         </SplideSlide>
-        <SplideSlide key="FRENIS">
-          <img src="@/assets/crew/fern4.jpg" alt="FRENIS">
+        <SplideSlide key="CITOR">
+        <img src="@/assets/crew/vit/vitor.jpg" alt="CITOR">
+        </SplideSlide>
+        <SplideSlide key="BARCO">
+          <img src="@/assets/crew/marco/marco.jpg" alt="BARCO">
         </SplideSlide>
         <SplideSlide key="BATERRIST">
-          <img src="@/assets/crew/fafis5.jpg" alt="BATERRIST">
+          <img src="@/assets/crew/fafis/fafis.jpg" alt="BATERRIST">
         </SplideSlide>
       </SplideTrack>
       <div class="button-wrapper">
@@ -58,17 +59,22 @@
         </button>
       </div>
     </Splide>
-    <div v-if="!houve" class="about-biznatcho">
-      <h2>{{selectedSlide}}</h2>
+    <div v-if="!houve && loadPhotos(banda[selectedSlide].fotos)"
+      class="about-biznatcho">
+      <h3>{{banda[selectedSlide].cognome}}</h3>
       <p>
-        Aqui fénis irão encontrar as melhores costelas chilenas e
-        as melhores cervejas artesanais do mundo.
+        {{banda[selectedSlide].descrição}}
       </p>
+      <span>{{photos}}</span>
+      <div v-for="photo in photos" :key="photo">
+        <img :src="banda[selectedSlide].fotos + photo" :alt="photo">
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import banda from '@/data/band-info.json';
 import { Splide, SplideSlide, SplideTrack } from '@splidejs/vue-splide';
 import { ref, onMounted } from 'vue';
 
@@ -124,16 +130,24 @@ export default {
         arrows: false,
       },
       houve: true,
+      selectedSlide: 0,
+      banda,
+      photos: [],
     };
   },
   methods: {
     showPlayPause() {
       this.houve = !this.houve;
     },
-  },
-  computed: {
-    selectedSlide() {
-      return Object.keys(this.main);
+    onActive(slide) {
+      this.selectedSlide = slide.index;
+    },
+    loadPhotos(folder) {
+      this.$nextTick(() => {
+        const photos = require.context(folder, true, /\.(jpg|JPG)$/);
+        this.photos = photos.keys();
+      });
+      return true;
     },
   },
 };
@@ -166,15 +180,15 @@ export default {
   background-image: url("~@/assets/btn-bgd.png");
   color: white;
   width: 35vh;
-}
-.play-pause:hover {
-  border: 1px solid rgba(255, 255, 255, 0);
-  background-image: url("~@/assets/intemperismo.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
   background-position: initial;
   transition: all 1.5s ease-in-out;
+}
+.play-pause:hover {
+  border: 1px solid rgba(255, 255, 255, 0);
+  background-image: url("~@/assets/intemperismo.jpg");
 }
 .overlay {
   position: absolute;
