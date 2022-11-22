@@ -28,7 +28,7 @@ export default {
 </script>
 
 <style>
-@import '~@/assets/styles/variables.css';
+@import '@/assets/styles/variables.css';
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -39,7 +39,7 @@ export default {
 }
 
 body {
-  background-image: url("~@/assets/intemperismo.jpg");
+  background-image: url("@/assets/intemperismo.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;

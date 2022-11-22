@@ -59,15 +59,15 @@
         </button>
       </div>
     </Splide>
-    <div v-if="!houve && loadPhotos(banda[selectedSlide].fotos)"
+    <div v-if="!houve"
       class="about-biznatcho">
       <h3>{{banda[selectedSlide].cognome}}</h3>
       <p>
         {{banda[selectedSlide].descrição}}
       </p>
-      <span>{{photos}}</span>
-      <div v-for="photo in photos" :key="photo">
-        <img :src="banda[selectedSlide].fotos + photo" :alt="photo">
+      <span>fOTOS: {{banda[selectedSlide].fotos}}</span>
+      <div v-for="photo in photos[selectedSlide]" :key="photo">
+        <img :src="imagePath(banda[selectedSlide].fotos, photo)" :alt="photo">
       </div>
     </div>
   </div>
@@ -109,7 +109,7 @@ export default {
         gap: '1rem',
         pagination: false,
         speed: 800,
-        arrows: false,
+        arrows: true,
         autoplay: true,
         interval: 2500,
         rewind: true,
@@ -142,13 +142,33 @@ export default {
     onActive(slide) {
       this.selectedSlide = slide.index;
     },
-    loadPhotos(folder) {
-      this.$nextTick(() => {
-        const photos = require.context(folder, true, /\.(jpg|JPG)$/);
-        this.photos = photos.keys();
-      });
-      return true;
+    loadPhotos() {
+      let fern = require.context('@/assets/crew/fern', true, /\.(jpg|JPG)$/).keys();
+      fern = fern.map((item) => item.replace('.', ''));
+      let mangusto = require.context('@/assets/crew/mangusto', true, /\.(jpg|JPG)$/).keys();
+      mangusto = mangusto.map((item) => item.replace('.', ''));
+      let vit = require.context('@/assets/crew/vit', true, /\.(jpg|JPG)$/).keys();
+      vit = vit.map((item) => item.replace('.', ''));
+      let marco = require.context('@/assets/crew/marco', true, /\.(jpg|JPG)$/).keys();
+      marco = marco.map((item) => item.replace('.', ''));
+      let fafis = require.context('@/assets/crew/fafis', true, /\.(jpg|JPG)$/).keys();
+      fafis = fafis.map((item) => item.replace('.', ''));
+      this.photos = [fern, mangusto, vit, marco, fafis];
     },
+    getImgUrl(folder, photo) {
+      console.log(folder + photo);
+      // eslint-disable-next-line import/no-dynamic-require, global-require
+      return require(folder + photo);
+    },
+  },
+  computed: {
+    imagePath() {
+      // eslint-disable-next-line import/no-dynamic-require, global-require
+      return (folder, photo) => require(`${folder}${photo}`);
+    },
+  },
+  mounted() {
+    this.loadPhotos();
   },
 };
 </script>
@@ -177,7 +197,7 @@ export default {
 .play-pause {
   border: 1px solid rgb(195, 100, 27);
   border-radius: 5px;
-  background-image: url("~@/assets/btn-bgd.png");
+  background-image: url("@/assets/btn-bgd.png");
   color: white;
   width: 35vh;
   background-repeat: no-repeat;
@@ -188,7 +208,7 @@ export default {
 }
 .play-pause:hover {
   border: 1px solid rgba(255, 255, 255, 0);
-  background-image: url("~@/assets/intemperismo.jpg");
+  background-image: url("@/assets/intemperismo.jpg");
 }
 .overlay {
   position: absolute;
