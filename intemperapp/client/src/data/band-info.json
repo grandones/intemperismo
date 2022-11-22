@@ -3,30 +3,30 @@
     "nome": "Matheus Sarafyan",
     "cognome": "FERNANDELAS",
     "descrição": "No canto esquerrrrrdo, pesando DUUUUUUUUUUUUUUUUUUUUUUUUZENTOS QUILOS de puuuras cordas... e guitarra! FERNANDES MATELOS FERNANDELES!!!",
-    "fotos": "@/assets/crew/fern"
+    "fotos": "/src/assets/crew/fern"
   },
   {
     "nome": "Marcelo Carvalho",
     "cognome": "MÆNGÜST",
     "descrição": "Na frrrrrente, com 4,10m de pura sensualidade alemã, língua más rápida del oeste, WAS? HERR GRRANDONES MANGUSTO!!!",
-    "fotos": "@/assets/crew/mangusto"
+    "fotos": "/src/assets/crew/mangusto"
   },
   {
     "nome": "Vitor Cunha",
     "cognome": "CITOR",
     "descrição": "E no canto inferior lá do fundo. De puros 350g, ja, de barba, ja? 35g de Celsius. 45g de Carbono. 35L de água, ja? 2g de Salz, ja? Und schneiden der Sieben, ja? Und Pfeffer Schwarz, ja e uoi uoi? Je parles pa de français, Mounsier VITEAUX, LE BAIXIST!!!",
-    "fotos": "@/assets/crew/vit"
+    "fotos": "/src/assets/crew/vit"
   },
   {
     "nome": "Marco Briani",
     "cognome": "BARCO",
     "descrição": "E no vocal, com 412m³ de potênia fisiculturrist, nosso porta voz! BRIANNO 'DIPATTO' MARKUS!!!",
-    "fotos": "@/assets/crew/marco"
+    "fotos": "/src/assets/crew/marco"
   },
   {
     "nome": "Fabrício Schiavo",
     "cognome": "BATERRIST",
     "descrição": "Ou, pera, cala a boca aí que acho que tá tocando a porta. Abre a porta aí, oh caralho. Quem é esse cara? JE SUIS LE BATERRIST!!!",
-    "fotos": "@/assets/crew/fafis"
+    "fotos": "/src/assets/crew/fafis"
   }
 ]

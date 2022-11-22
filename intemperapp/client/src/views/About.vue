@@ -67,7 +67,7 @@
       </p>
       <span>fOTOS: {{banda[selectedSlide].fotos}}</span>
       <div v-for="photo in photos[selectedSlide]" :key="photo">
-        <img :src="imagePath(banda[selectedSlide].fotos, photo)" :alt="photo">
+        <img :src="getImgUrl(photo.name)" :alt="photo">
       </div>
     </div>
   </div>
@@ -143,28 +143,16 @@ export default {
       this.selectedSlide = slide.index;
     },
     loadPhotos() {
-      let fern = require.context('@/assets/crew/fern', true, /\.(jpg|JPG)$/).keys();
-      fern = fern.map((item) => item.replace('.', ''));
-      let mangusto = require.context('@/assets/crew/mangusto', true, /\.(jpg|JPG)$/).keys();
-      mangusto = mangusto.map((item) => item.replace('.', ''));
-      let vit = require.context('@/assets/crew/vit', true, /\.(jpg|JPG)$/).keys();
-      vit = vit.map((item) => item.replace('.', ''));
-      let marco = require.context('@/assets/crew/marco', true, /\.(jpg|JPG)$/).keys();
-      marco = marco.map((item) => item.replace('.', ''));
-      let fafis = require.context('@/assets/crew/fafis', true, /\.(jpg|JPG)$/).keys();
-      fafis = fafis.map((item) => item.replace('.', ''));
+      let fern = import.meta.glob('/src/assets/crew/fern/*.jpg');
+      let mangusto = import.meta.glob('/src/assets/crew/mangusto/*.jpg');
+      let vit = import.meta.glob('/src/assets/crew/vit/*.jpg');
+      let marco = import.meta.glob('/src/assets/crew/marco/*.jpg');
+      let fafis = import.meta.glob('/src/assets/crew/fafis/*.jpg');
       this.photos = [fern, mangusto, vit, marco, fafis];
     },
-    getImgUrl(folder, photo) {
-      console.log(folder + photo);
-      // eslint-disable-next-line import/no-dynamic-require, global-require
-      return require(folder + photo);
-    },
-  },
-  computed: {
-    imagePath() {
-      // eslint-disable-next-line import/no-dynamic-require, global-require
-      return (folder, photo) => require(`${folder}${photo}`);
+    getImgUrl(photo) {
+      const imageUrl = new URL(`${photo}`, import.meta.url).href
+      return imageUrl
     },
   },
   mounted() {
