@@ -8,65 +8,68 @@
       class="thumbnail"
     >
       <SplideSlide>
-        <img src="@/assets/crew/fern/fern.jpg" alt="FERNANDELAS">
+        <img src="@/assets/crew/fern/1-fern.jpg" alt="FERNANDELAS">
       </SplideSlide>
       <SplideSlide>
-        <img src="@/assets/crew/mangusto/marcelo.jpg" alt="MÆNGÜST">
+        <img src="@/assets/crew/mangusto/1-marcelo.jpg" alt="MÆNGÜST">
       </SplideSlide>
       <SplideSlide>
-        <img src="@/assets/crew/vit/vitor.jpg" alt="CITOR">
+        <img src="@/assets/crew/vit/1-vitor.jpg" alt="CITOR">
       </SplideSlide>
       <SplideSlide>
-        <img src="@/assets/crew/marco/marco.jpg" alt="BARCO">
+        <img src="@/assets/crew/marco/1-marco.jpg" alt="BARCO">
       </SplideSlide>
       <SplideSlide>
-        <img src="@/assets/crew/fafis/fafis.jpg" alt="BATERRIST">
+        <img src="@/assets/crew/fafis/1-fafis.jpg" alt="BATERRIST">
       </SplideSlide>
     </Splide>
-    <Splide
-      :options="mainOptions"
-      aria-label="My Favorite Biznatchos"
-      ref="main"
-      :has-track="false"
-      class="splide"
-      @splide:active="onActive"
-    >
-      <SplideTrack>
-        <div class="overlay">
-          <i v-if="houve" class="icon bi bi-play-fill"></i>
-          <i v-else class="icon bi bi-pause-fill"></i>
-        </div>
-        <SplideSlide key="FERNANDELAS">
-          <img src="@/assets/crew/fern/fern.jpg" alt="FERNANDELAS">
-        </SplideSlide>
-        <SplideSlide key="MÆNGÜST">
-          <img src="@/assets/crew/mangusto/marcelo.jpg" alt="MÆNGÜST">
-        </SplideSlide>
-        <SplideSlide key="CITOR">
-        <img src="@/assets/crew/vit/vitor.jpg" alt="CITOR">
-        </SplideSlide>
-        <SplideSlide key="BARCO">
-          <img src="@/assets/crew/marco/marco.jpg" alt="BARCO">
-        </SplideSlide>
-        <SplideSlide key="BATERRIST">
-          <img src="@/assets/crew/fafis/fafis.jpg" alt="BATERRIST">
-        </SplideSlide>
-      </SplideTrack>
-      <div class="button-wrapper">
-        <button @click="showPlayPause" class="play-pause splide__toggle">
-          <span class="splide__toggle__play">NÃO HOUVE</span>
-          <span class="splide__toggle__pause">HOUVE</span>
-        </button>
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <Splide
+          :options="mainOptions"
+          aria-label="My Favorite Biznatchos"
+          ref="main"
+          :has-track="false"
+          class="splide"
+          @splide:active="onActive"
+        >
+          <SplideTrack>
+            <div class="overlay">
+              <i v-if="houve" class="icon bi bi-play-fill"></i>
+              <i v-else class="icon bi bi-pause-fill"></i>
+            </div>
+            <SplideSlide key="FERNANDELAS">
+              <img src="@/assets/crew/fern/1-fern.jpg" alt="FERNANDELAS">
+            </SplideSlide>
+            <SplideSlide key="MÆNGÜST">
+              <img src="@/assets/crew/mangusto/1-marcelo.jpg" alt="MÆNGÜST">
+            </SplideSlide>
+            <SplideSlide key="CITOR">
+            <img src="@/assets/crew/vit/1-vitor.jpg" alt="CITOR">
+            </SplideSlide>
+            <SplideSlide key="BARCO">
+              <img src="@/assets/crew/marco/1-marco.jpg" alt="BARCO">
+            </SplideSlide>
+            <SplideSlide key="BATERRIST">
+              <img src="@/assets/crew/fafis/1-fafis.jpg" alt="BATERRIST">
+            </SplideSlide>
+          </SplideTrack>
+          <div class="button-wrapper">
+            <button @click="showPlayPause" class="play-pause splide__toggle">
+              <span class="splide__toggle__play">NÃO HOUVE</span>
+              <span class="splide__toggle__pause">HOUVE</span>
+            </button>
+          </div>
+        </Splide>
       </div>
-    </Splide>
+    </div>
     <div v-if="!houve"
-      class="about-biznatcho">
+      class="about-biznatcho row">
       <h3>{{banda[selectedSlide].cognome}}</h3>
-      <p>
+      <h4>
         {{banda[selectedSlide].descrição}}
-      </p>
-      <span>fOTOS: {{banda[selectedSlide].fotos}}</span>
-      <div v-for="photo in photos[selectedSlide]" :key="photo">
+      </h4>
+      <div v-for="photo in photos[selectedSlide]" :key="photo" class="col">
         <img :src="getImgUrl(photo.name)" :alt="photo">
       </div>
     </div>
@@ -143,11 +146,11 @@ export default {
       this.selectedSlide = slide.index;
     },
     loadPhotos() {
-      let fern = import.meta.glob('/src/assets/crew/fern/*.jpg');
-      let mangusto = import.meta.glob('/src/assets/crew/mangusto/*.jpg');
-      let vit = import.meta.glob('/src/assets/crew/vit/*.jpg');
-      let marco = import.meta.glob('/src/assets/crew/marco/*.jpg');
-      let fafis = import.meta.glob('/src/assets/crew/fafis/*.jpg');
+      let fern = import.meta.glob('/src/assets/crew/fern/*');
+      let mangusto = import.meta.glob('/src/assets/crew/mangusto/*');
+      let vit = import.meta.glob('/src/assets/crew/vit/*');
+      let marco = import.meta.glob('/src/assets/crew/marco/*');
+      let fafis = import.meta.glob('/src/assets/crew/fafis/*');
       this.photos = [fern, mangusto, vit, marco, fafis];
     },
     getImgUrl(photo) {
@@ -161,7 +164,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .splide {
   width: 100%;
   height: 100%;
@@ -216,8 +219,8 @@ export default {
 }
 .overlay i {
   opacity: 0;
-  -webkit-animation: flash 1.2s ease;
-  animation: flash 1.2s ease;
+  -webkit-animation: flash 1.3s ease;
+  animation: flash 1.3s ease;
 }
 @-webkit-keyframes flash {
  0% { opacity: 1; }
@@ -228,7 +231,16 @@ export default {
  100% { opacity: 0; }
 }
 .about-biznatcho {
-  margin-top: 0.4rem;
+  margin-top: 0.8rem;
   text-align: center;
+  h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
 }
 </style>
